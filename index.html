@@ -2,21 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
   <title>Times Table Quiz</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <main id="home" class="screen">
     <h1>Times Table Quiz</h1>
-    <p>Pick a table</p>
+    <p class="subtitle">Pick a table to practise</p>
     <div id="tables" class="tables"></div>
   </main>
 
   <main id="quiz" class="screen" hidden>
-    <p id="progress"></p>
-    <p id="question" class="question"></p>
-    <button id="home-btn" type="button">Choose a table</button>
+    <div class="quiz-top">
+      <button id="quit-btn" class="link-btn" type="button" aria-label="Choose a table">← Tables</button>
+      <p id="progress" class="progress"></p>
+    </div>
+
+    <div id="play">
+      <p id="question" class="question" aria-live="polite"></p>
+      <output id="answer" class="answer" aria-label="Your answer"></output>
+      <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+
+      <div id="keypad" class="keypad">
+        <button type="button" data-key="1">1</button>
+        <button type="button" data-key="2">2</button>
+        <button type="button" data-key="3">3</button>
+        <button type="button" data-key="4">4</button>
+        <button type="button" data-key="5">5</button>
+        <button type="button" data-key="6">6</button>
+        <button type="button" data-key="7">7</button>
+        <button type="button" data-key="8">8</button>
+        <button type="button" data-key="9">9</button>
+        <button type="button" data-key="Backspace" class="key-back" aria-label="Delete">⌫</button>
+        <button type="button" data-key="0">0</button>
+        <button type="button" data-key="Enter" class="key-check" aria-label="Check">✓</button>
+      </div>
+    </div>
+
+    <div id="results" class="results" hidden>
+      <p id="score" class="score"></p>
+      <button id="again-btn" class="big-btn primary" type="button">Play again</button>
+      <button id="home-btn" class="big-btn" type="button">Choose a table</button>
+    </div>
   </main>
 
   <script type="module" src="./app.js"></script>
