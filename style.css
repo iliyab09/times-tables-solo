@@ -1,16 +1,187 @@
-body {
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  padding: 16px;
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --bg: #fff8e7;
+  --ink: #1f2140;
+  --muted: #5b5d7a;
+  --primary: #4f46e5;
+  --good: #15803d;
+  --good-bg: #dcfce7;
+  --bad: #b91c1c;
+  --bad-bg: #fee2e2;
+  --key: #ffffff;
+  --radius: 18px;
 }
 
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Avenir Next", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.screen {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 20px 16px calc(20px + env(safe-area-inset-bottom));
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.screen[hidden], [hidden] { display: none !important; }
+
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:focus-visible { outline: 4px solid var(--primary); outline-offset: 3px; }
+
+/* Home */
+h1 {
+  margin: 8px 0 4px;
+  font-size: 2.2rem;
+  text-align: center;
+  color: var(--primary);
+}
+.subtitle {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
 .tables {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-
-button {
-  min-height: 56px;
-  font-size: 1.2rem;
+.table-btn {
+  min-height: 88px;
+  border-radius: var(--radius);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18);
 }
+.table-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18); }
+.table-num { font-size: 2rem; font-weight: 800; line-height: 1; }
+.table-best { font-size: 0.95rem; font-weight: 600; }
+/* Dark-enough shades so white text stays readable (≥4.5:1). */
+.c1 { background: #c2410c; }
+.c2 { background: #b45309; }
+.c3 { background: #4d7c0f; }
+.c4 { background: #15803d; }
+.c5 { background: #0f766e; }
+.c6 { background: #0369a1; }
+.c7 { background: #4338ca; }
+.c8 { background: #7e22ce; }
+.c9 { background: #a21caf; }
+.c10 { background: #be123c; }
+
+/* Quiz */
+.quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.link-btn {
+  min-height: 56px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.progress {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+#play { display: flex; flex-direction: column; flex: 1; }
+.question {
+  margin: 16px 0 8px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+}
+.answer {
+  display: block;
+  margin: 0 auto;
+  min-width: 160px;
+  padding: 6px 16px;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 4px solid var(--primary);
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.answer.empty { border-style: dashed; }
+.feedback {
+  min-height: 3.6rem;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feedback.good { color: var(--good); background: var(--good-bg); }
+.feedback.bad { color: var(--bad); background: var(--bad-bg); }
+
+.keypad {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.keypad button {
+  min-height: 64px;
+  border-radius: var(--radius);
+  background: var(--key);
+  font-size: 2rem;
+  font-weight: 800;
+  box-shadow: 0 4px 0 #d9d2bf;
+}
+.keypad button:active { transform: translateY(3px); box-shadow: 0 1px 0 #d9d2bf; }
+.keypad .key-back { background: #ffe4b5; }
+.keypad .key-check { background: var(--good); color: #fff; box-shadow: 0 4px 0 #0f5a2b; }
+
+/* Results */
+.results {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.score {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+.big-btn {
+  min-height: 64px;
+  border-radius: var(--radius);
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: #fff;
+  color: var(--primary);
+  border: 3px solid var(--primary);
+}
+.big-btn.primary { background: var(--primary); color: #fff; }
