@@ -9,3 +9,5 @@ What it must do:
 Rules: phone-first, no accounts, no backend, no tracking. Deploy to GitHub Pages and give me the live link.
 
 Keep it tiny: ship as soon as these two screens work. No extra features. Don't wait for me with questions; make reasonable decisions yourself. I will look at it when it is live.
+
+No tracking, no accounts.
